@@ -1,0 +1,22 @@
+{
+  "name": "youtube-mobile",
+  "version": "1.0.0",
+  "description": "redesign youtube mobile",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "redesign",
+    "youtube",
+    "mobile"
+  ],
+  "author": "Anderson Menezes",
+  "license": "MIT",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-browser-sync": "^2.2.0",
+    "grunt-contrib-sass": "^1.0.0",
+    "grunt-contrib-watch": "^1.0.0"
+  }
+}
