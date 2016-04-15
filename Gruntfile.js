@@ -1,19 +1,10 @@
 module.exports = function(grunt) {
 	grunt.initConfig({
-		watch: {
-				files: 'source/sass/main.sass',
-				tasks: ['sass']
-		},
-
 		sass: {
 			dev: {
-				options: { 
-					style: 'expanded' 
+				files: {
+					'assets/css/main.css': 'source/sass/main.scss'
 				}
-			},
-
-			files: {
-				'app/css/style.css': 'source/sass/main.sass'
 			}
 		},
 
@@ -21,20 +12,41 @@ module.exports = function(grunt) {
 			dev: {
 				bsFiles: {
 					src: [
-						'app/css/*.css',
-            'app/*.html'
+						'assets/css/main.css',
+						'assets/*.html'
 					]
 				},
 				options: {
 					watchTask: true,
-					server: 'app'
+					server: './assets'
 				}
 			}
+		},
+
+		htmlmin: {
+			dist: {
+				options: {
+					removeComments: true,
+        	collapseWhitespace: true
+				},
+				files: {
+					'assets/index.html': 'source/index.html'
+				}
+			}
+		},
+
+		watch: {
+			files: [
+				'source/sass/**/*.scss',
+				'source/*.html'
+			],
+			tasks: [ 'sass', 'htmlmin']
 		}
 	});
 	grunt.loadNpmTasks('grunt-contrib-sass');
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-browser-sync');
+	grunt.loadNpmTasks('grunt-contrib-htmlmin');
 
-	grunt.registerTask('default', ['browserSync', 'watch']);
+	grunt.registerTask('default', ['sass', 'htmlmin', 'browserSync', 'watch']);
 }
