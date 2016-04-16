@@ -1,9 +1,7 @@
 module.exports = function(grunt) {
 	grunt.initConfig({
 		clean: {
-			temp: [
-					'assets/js/all.js', 'assets/js/libs.js', 'assets/js/main.js', 'assets/css/main.css', 'assets/css/main.css.map' ],
-			all: ['assets/']
+			src: [ 'assets/js/main.js', 'assets/css/main.css.map' ]
 		},
 
 		sass: {
@@ -19,7 +17,8 @@ module.exports = function(grunt) {
 				bsFiles: {
 					src: [
 						'assets/css/main.css',
-						'assets/*.html'
+						'assets/*.html',
+						'assets/js/main.min.js'
 					]
 				},
 				options: {
@@ -49,16 +48,8 @@ module.exports = function(grunt) {
 
 		concat: {
 			scripts: {
-				src: 'source/js/*.js',
+				src: 'source/js/**/*.js',
 				dest: 'assets/js/main.js'
-			},
-			libs: {
-				src: 'source/js/libs/*.js',
-				dest: 'assets/js/libs.js'
-			},
-			all: {
-				src: [ 'assets/js/main.js', 'assets/js/libs.js' ],
-				dest: 'assets/js/all.js'
 			}
 		},
 
@@ -72,7 +63,7 @@ module.exports = function(grunt) {
 		cssmin: {
 			dist: {
 				src: 'assets/css/main.css',
-				dest: 'assets/css/main.min.css'
+				dest: 'assets/css/main.css'
 			}
 		},
 
@@ -82,7 +73,7 @@ module.exports = function(grunt) {
 				'source/*.html',
 				'source/js/**/*.js'
 			],
-			tasks: [ 'sass', 'htmlmin', 'jshint', 'cssmin', 'clean:temp' ]
+			tasks: [ 'sass', 'htmlmin', 'jshint', 'concat', 'uglify', 'cssmin', 'clean' ]
 		}
 	});
 
@@ -96,5 +87,5 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-cssmin');
 	grunt.loadNpmTasks('grunt-contrib-clean');
 
-	grunt.registerTask('default', [ 'sass', 'browserSync', 'htmlmin', 'jshint', 'concat:scripts', 'uglify', 'concat:libs', 'concat:all', 'cssmin',  'clean:temp', 'watch']);
+	grunt.registerTask('default', [ 'sass', 'browserSync', 'htmlmin', 'jshint', 'concat', 'uglify', 'cssmin', 'clean', 'watch']);
 }
