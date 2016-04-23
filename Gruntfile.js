@@ -1,13 +1,13 @@
 module.exports = function(grunt) {
 	grunt.initConfig({
 		clean: {
-			src: [ 'assets/js/main.js', 'assets/css/main.css.map' ]
+			src: [ 'assets/js/main.js' ]
 		},
 
 		sass: {
 			dev: {
 				files: {
-					'assets/css/main.css': 'source/sass/main.scss'
+					'assets/css/main.css': 'source/sass/_main.sass'
 				}
 			}
 		},
@@ -69,7 +69,7 @@ module.exports = function(grunt) {
 
 		watch: {
 			files: [
-				'source/sass/**/*.scss',
+				'source/sass/**/*.sass',
 				'source/*.html',
 				'source/js/**/*.js'
 			],
