@@ -7,7 +7,7 @@ module.exports = function(grunt) {
 		sass: {
 			dev: {
 				files: {
-					'assets/css/main.css': 'source/sass/_main.sass'
+					'assets/css/main.css': 'source/sass/main.sass'
 				}
 			}
 		},
