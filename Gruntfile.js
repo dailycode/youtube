@@ -67,6 +67,12 @@ module.exports = function(grunt) {
 			}
 		},
 
+		copy: {
+			main: {
+				files: [ {expand: true, cwd: 'source/fonts/', src: ['**'], dest: 'assets/fonts/'} ],
+			},
+		},
+
 		watch: {
 			files: [
 				'source/sass/**/*.{sass,scss}',
@@ -85,7 +91,8 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-jshint');
 	grunt.loadNpmTasks('grunt-contrib-concat');
 	grunt.loadNpmTasks('grunt-contrib-cssmin');
+	grunt.loadNpmTasks('grunt-contrib-copy');
 	grunt.loadNpmTasks('grunt-contrib-clean');
 
-	grunt.registerTask('default', [ 'sass', 'browserSync', 'htmlmin', 'jshint', 'concat', 'uglify', 'cssmin', 'clean', 'watch']);
+	grunt.registerTask('default', [ 'sass', 'browserSync', 'htmlmin', 'jshint', 'concat', 'uglify', 'cssmin', 'copy', 'clean', 'watch']);
 }
