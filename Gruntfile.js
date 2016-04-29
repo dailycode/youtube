@@ -73,13 +73,24 @@ module.exports = function(grunt) {
 			},
 		},
 
+		imagemin: {
+		    dynamic: {                         
+		      files: [{
+		        expand: true,                  			
+		        cwd: 'source/img',                   	
+		        src: ['**/*.{png,jpg,gif,svg}'],   		
+		        dest: 'assets/img'                  			
+		      }]
+		    }
+		},
+
 		watch: {
 			files: [
 				'source/sass/**/*.{sass,scss}',
 				'source/*.html',
 				'source/js/**/*.js'
 			],
-			tasks: [ 'sass', 'htmlmin', 'jshint', 'concat', 'uglify', 'cssmin', 'clean' ]
+			tasks: [ 'sass', 'htmlmin', 'jshint', 'concat', 'uglify', 'cssmin', 'imagemin', 'clean' ]
 		}
 	});
 
@@ -92,7 +103,8 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-concat');
 	grunt.loadNpmTasks('grunt-contrib-cssmin');
 	grunt.loadNpmTasks('grunt-contrib-copy');
+	grunt.loadNpmTasks('grunt-contrib-imagemin');
 	grunt.loadNpmTasks('grunt-contrib-clean');
 
-	grunt.registerTask('default', [ 'sass', 'browserSync', 'htmlmin', 'jshint', 'concat', 'uglify', 'cssmin', 'copy', 'clean', 'watch']);
+	grunt.registerTask('default', [ 'sass', 'browserSync', 'htmlmin', 'jshint', 'concat', 'uglify', 'cssmin', 'copy', 'imagemin', 'clean', 'watch']);
 }
