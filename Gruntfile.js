@@ -74,12 +74,12 @@ module.exports = function(grunt) {
 		},
 
 		imagemin: {
-		    dynamic: {                         
+		    dynamic: {
 		      files: [{
-		        expand: true,                  			
-		        cwd: 'source/img',                   	
-		        src: ['**/*.{png,jpg,gif,svg}'],   		
-		        dest: 'assets/img'                  			
+		        expand: true,
+		        cwd: 'source/img',
+		        src: ['**/*.{png,jpg,gif,svg}'],
+		        dest: 'assets/img'
 		      }]
 		    }
 		},
@@ -106,5 +106,5 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-imagemin');
 	grunt.loadNpmTasks('grunt-contrib-clean');
 
-	grunt.registerTask('default', [ 'sass', 'browserSync', 'htmlmin', 'jshint', 'concat', 'uglify', 'cssmin', 'copy', 'imagemin', 'clean', 'watch']);
+	grunt.registerTask('default', [ 'browserSync', 'htmlmin', 'sass', 'jshint', 'watch']);
 }
