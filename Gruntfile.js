@@ -107,4 +107,4 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-clean');
 
 	grunt.registerTask('default', [ 'browserSync', 'htmlmin', 'sass', 'jshint', 'concat', 'uglify', 'imagemin', 'clean', 'watch']);
-}
+
